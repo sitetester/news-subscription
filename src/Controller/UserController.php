@@ -33,7 +33,6 @@ class UserController extends Controller
             /** @var User $user */
             $user = $form->getData();
 
-            // encode password only for new sign up
             $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
 
