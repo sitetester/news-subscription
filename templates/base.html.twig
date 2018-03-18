@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('css/subscription.css') }}" rel="stylesheet"/>
+    {% endblock %}
+
+</head>
+<body>
+
+{% block body %}
+
+    <div id="header_menu">
+        {% if app.user %}
+            Welcome, {{ app.user.username|default('') }}
+            | <a href="{{ path('logout') }}">Logout</a>
+            | <a href="{{ path('subscription_list') }}">Subscription</a>
+
+        {% else %}
+            <a href="{{ path('login') }}">Login</a>
+            | <a href="{{ path('register') }}">Register</a>
+            | <a href="{{ path('subscription_subscribe') }}">Subscribe</a>
+        {% endif %}
+    </div>
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

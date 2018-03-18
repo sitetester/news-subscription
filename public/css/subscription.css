@@ -1,0 +1,85 @@
+#header_menu {
+    margin-bottom: 20px;
+}
+
+div.news_subscription {
+    width: 100%;
+}
+
+div.title {
+    font-weight: bolder;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+div.news_subscription label {
+    width: 125px;
+    display: inline-block;
+}
+
+div.news_subscription label:after {
+    content: ": "
+}
+
+div.news_subscription div ul {
+    color: red;
+}
+
+div.news_subscription input {
+    margin-left: 10px;
+    width: 170px;
+}
+
+div.news_subscription input[type=checkbox] {
+    margin-left: 10px;
+    width: 15px;
+}
+
+
+div#news_subscription_newsCategories div label{
+    width: auto!important;
+}
+
+div#news_subscription_newsCategories label:after {
+    content: "";
+}
+
+
+div#news_subscription_newsCategories div {
+    width: auto;
+    margin-left: 120px;
+}
+
+
+button {
+    text-align: center;
+    margin-left: 137px;
+    margin-top: 10px;
+    padding: 4px 50px;
+}
+
+select {
+    margin-left: 10px;
+    width: 180px;
+}
+
+div.error {
+    color: red;
+    margin-left: 137px;
+    margin-top: 5px;
+}
+
+div.flash-notice {
+    color: green;
+}
+
+div.news_subscription table {
+    width: 100%;
+    border: 1px solid grey;
+}
+
+div.news_subscription th, td {
+    border: 1px solid grey;
+    text-align: left;
+}
+

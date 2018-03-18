@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/subscription.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="news_subscription">
+        <div class="title">User Registration</div>
+
+        {{ form_start(
+            form,
+            {
+                'attr': {'novalidate': 'novalidate'},
+                'action': path('register'),
+                'method': 'POST'
+            }
+        ) }}
+
+        {{ form_widget(form) }}
+        <button type="submit">Register</button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

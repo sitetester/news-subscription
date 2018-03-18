@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ parent() }}
+
+    <div class="news_subscription">
+        <div class="title">News Subscription Listing</div>
+
+        <table>
+
+
+            <tr>
+                <th><a href="{{ path('subscription_list', {'sortBy': 'subscriptionDate'}) }}">Subscription Date</a></th>
+                <th><a href="{{ path('subscription_list', {'sortBy': 'subscriberName'}) }}">Subscriber Name</a></th>
+                <th><a href="{{ path('subscription_list', {'sortBy': 'subscriberEmail'}) }}">Subscriber Email</a></th>
+                <th>Subscription Categories</th>
+                <th><a href="{{ path('subscription_subscribe') }}">Subscribe</a></th>
+            </tr>
+
+            {% for subscription in subscriptions %}
+                <tr>
+                    <td>{{ subscription.subscriptionDate|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ subscription.subscriberName|e }}</td>
+                    <td>{{ subscription.subscriberEmail|e }}</td>
+
+                    <td>
+                        <ul>
+                            {% for category in subscription.newsCategories %}
+                                <li>{{ category.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="{{ path('subscription_edit', {'subscriberEmail': subscription.subscriberEmail}) }}">Edit</a>
+                        |
+                        <a class="deleteLink"
+                           href="{{ path('subscription_delete', {'subscriptionEmail': subscription.subscriberEmail}) }}">Delete</a>
+                    </td>
+                </tr>
+
+            {% else %}
+                <p>No data found.</p>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-1.12.4.js') }}"></script>
+    <script src="{{ asset('js/subscription.js') }}"></script>
+{% endblock %}

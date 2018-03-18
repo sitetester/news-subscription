@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/subscription.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% if error %}
+        <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="news_subscription">
+        <div class="title">User Login</div>
+
+        <form action="{{ path('login') }}" method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="_password"/>
+            </div>
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <input type="hidden" name="_target_path" value="subscription_list"/>
+
+            <button type="submit">login</button>
+        </form>
+    </div>
+
+{% endblock %}
