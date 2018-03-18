@@ -48,7 +48,4 @@ Then open a browser with address & port where web
 server started in terminal window.
 
 #### Login: 
-* admin
-* demo
-
-Or create a new one using ```Register``` link
+To login the system, first create a new account using ```Register``` link
