@@ -34,11 +34,8 @@ class UserController extends Controller
             $user = $form->getData();
 
             // encode password only for new sign up
-
             $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
-
-            // print_r($user); exit;
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
