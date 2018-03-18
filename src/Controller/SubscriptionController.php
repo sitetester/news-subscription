@@ -39,16 +39,18 @@ class SubscriptionController extends Controller
 
             if (!$this->subscriptionManager->alreadySubscribed($newsSubscription->getSubscriberEmail())) {
                 $this->subscriptionManager->manageSubscription($newsSubscription);
-                if (!$this->getUser()) {
-                    $this->addFlash(
-                        'notice',
-                        'News subscribed successfully. Please login to see/modify subscription.'
-                    );
 
-                    return $this->redirectToRoute('login');
+                $message = 'News subscribed successfully.';
+                $redirectToRoute = 'subscription_list';
+
+                if (!$this->getUser()) {
+                    $message .= ' Please login to see/modify subscription.';
+                    $redirectToRoute = 'login';
                 }
 
-                return $this->redirectToRoute('subscription_list');
+                $this->addFlash('notice', $message);
+
+                return $this->redirectToRoute($redirectToRoute);
             }
 
             $error = 'User already subscribed with this email.';
