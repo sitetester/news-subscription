@@ -153,14 +153,17 @@ class User implements UserInterface, \Serializable
         );
     }
 
-    /** @see \Serializable::unserialize() */
+    /**
+     * https://symfony.com/doc/current/security/entity_provider.html
+     *
+     * @see \Serializable::unserialize()
+     */
     public function unserialize($serialized): void
     {
         list (
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
             // $this->salt
             ) = unserialize($serialized);
     }
